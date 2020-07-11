@@ -1,11 +1,12 @@
+mod email_service;
+mod vars;
+mod model;
+
 #[macro_use]
 extern crate diesel;
 extern crate serde_json;
 extern crate lettre;
 extern crate native_tls;
-
-mod vars;
-mod model;
 
 #[astix_rt::main]
 async fn main() ->  std::io::Result<()> {

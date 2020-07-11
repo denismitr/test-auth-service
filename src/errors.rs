@@ -25,3 +25,19 @@ impl ResponseError for AuthError {
         }
     }
 }
+
+impl From<UuidError> for AuthError {
+    fn from(_: UuidError) -> Self {
+        AuthError::BadId
+    }
+}
+
+impl From<DBError> for AuthError {
+    fn from(err: DBError) -> AuthError {
+        match err {
+            DBError::DatabaseError(kind, info) => {
+                let message = info.details().unwrap_or_else(|| info.message()).to_string();
+            }
+        }
+    }
+}
